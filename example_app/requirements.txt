@@ -1,0 +1,13 @@
+Flask
+Flask-Cors
+Flask-Migrate
+Flask-Script
+Flask-SQLAlchemy
+Jinja2
+psycopg2
+SQLAlchemy
+Werkzeug
+gunicorn
+celery
+cfenv
+redis
