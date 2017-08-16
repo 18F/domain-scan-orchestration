@@ -1,0 +1,29 @@
+jobs:
+- name: deploy-python-flask
+  plan:
+  - aggregate: &plan-gets
+    - get: example_celery_app
+    - get: timer
+      trigger: true
+  - put: deploy-python-flask
+    params:
+      path: example_celery_app
+      manifest: example_celery_app/manifest.yml
+      current_app_name: example_celery_app
+  on_failure:
+    put: slack
+    params: &slack-params
+      text: |
+        :x: Failed to deploy python-flask sample app
+        <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME|View build details>
+      channel: ((slack-channel))
+      username: ((slack-username))
+      icon_url: ((slack-icon-url))
+  on_success:
+    put: slack
+    params:
+      <<: *slack-params
+      channel: ((slack-news-channel))
+      text: |
+        :white_check_mark: Successfully deployed python-flask sample app
+        <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME|View build details>
