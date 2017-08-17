@@ -1,0 +1,31 @@
+Metadata-Version: 2.0
+Name: pshtt
+Version: 0.2.3
+Summary: Scan websites for HTTPS deployment best practices
+Home-page: https://www.dhs.gov/cyber-incident-response
+Author: Department of Homeland Security, National Cybersecurity Assessments and Technical Services team
+Author-email: ncats@hq.dhs.gov
+License: License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+Download-URL: https://github.com/dhs-ncats/pshtt
+Keywords: https best practices
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Requires-Dist: docopt
+Requires-Dist: publicsuffix
+Requires-Dist: pyopenssl (>=17.2.0)
+Requires-Dist: requests (>=2.14.2)
+Requires-Dist: requests-cache
+Requires-Dist: sslyze (>=1.1.0)
+Requires-Dist: wget (>=3.2)
+
+UNKNOWN
+
+
