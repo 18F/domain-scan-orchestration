@@ -1,0 +1,31 @@
+Metadata-Version: 2.0
+Name: SSLyze
+Version: 1.1.2
+Summary: Fast and full-featured SSL scanner.
+Home-page: https://github.com/nabla-c0d3/sslyze
+Author: Alban Diquet
+Author-email: nabla.c0d3@gmail.com
+License: GPLv2
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Natural Language :: French
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: System :: Networking
+Classifier: Topic :: Security
+Requires-Dist: cryptography (==1.9)
+Requires-Dist: nassl (>=0.16.0,<0.17.0)
+Requires-Dist: tls-parser (==1.0.0)
+Requires-Dist: enum34; python_version < "3.4"
+Requires-Dist: typing; python_version < "3.5"
+
+UNKNOWN
+
+

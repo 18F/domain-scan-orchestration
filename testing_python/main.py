@@ -1,4 +1,6 @@
+import requests
+
 def my_handler(event, context):
     return {
-        "message": event["hostname"]
+        "message": requests.get(event["url"]).text
     }
