@@ -1,0 +1,8 @@
+README.rst
+setup.py
+domain_scan/setup.py
+domain_scan.egg-info/PKG-INFO
+domain_scan.egg-info/SOURCES.txt
+domain_scan.egg-info/dependency_links.txt
+domain_scan.egg-info/requires.txt
+domain_scan.egg-info/top_level.txt
