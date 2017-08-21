@@ -1,4 +1,0 @@
-def handle(event, context):
-    return {
-        "message": event["hostname"]
-    }

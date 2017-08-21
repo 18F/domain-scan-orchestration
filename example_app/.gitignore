@@ -1,6 +1,0 @@
-app/static/images
-.DS_Store
-*.creds
-*.pyc
-*.py~
-*.swp
