@@ -11,8 +11,30 @@ import csv
 import logging
 import datetime
 import strict_rfc3339
+import requests
 
-
+def run_service(service_name, domain, options):
+    service_name = service_name.lower()
+    python_services = ["pshtt", "sslyze"]
+    javascript_services = ["pa11y"] 
+    if service_name in python_services:
+        base_service_url = "https://domain-scan-python-services.app.cloud.gov"
+    elif service_name in javascript_services:
+        base_service_url = "https://domain-scan-javascript-services.app.cloud.gov"
+    url = base_service_url + "/services/" +service_name
+    data = {
+        "domain": domain,
+        "options": options
+    }
+    # this may need to get refactored abit - the result here might need to get
+    # turned into a celery task
+    result = json.loads(requests.get(url, data=json.dumps(data)).text)
+    # result then gets saved to a database
+    # then this function returns a dictionary of some information about the function
+    # how long it took to run in seconds
+    # how much information was saved
+    # what domain was scanned
+    
 # Wrapper to a run() method to catch exceptions.
 def run(run_method, additional=None):
     cli_options = options()
