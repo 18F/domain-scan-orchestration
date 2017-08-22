@@ -3,6 +3,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 import os
 from celery import Celery
 from .env import env
+from celery.schedules import crontab
 
 
 def make_celery(app):
@@ -40,6 +41,19 @@ port = os.getenv("PORT", "5000")
 app.config["PORT"] = int(port)
 app.config["HOST"] = "0.0.0.0"
 
-celery = make_celery(app)
+schedule = {
+    "uswds": {
+        # structure: file.function
+        "task": "tasks.uswds",
+        "schedule": crontab(day_of_week=2),
+    }
+}
+    
+
+app.config["beat_schedule"] = schedule
+app.config["imports"] = ("tasks.uswds")
+app.config["task_acks_late"] = False
+
+celery_obj = make_celery(app)
 
 from app import views, models
