@@ -1,0 +1,12 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "extends": [
+    "airbnb-base",
+    "prettier"
+  ],
+  "rules": {
+    "no-console": "off"
+  }
+}

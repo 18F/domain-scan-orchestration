@@ -2,8 +2,9 @@
 buildpack: python_buildpack
 applications:
 - name: celery-example
-  memory: 256M
+  memory: 128M
   services:
   # enforce a postgres database
   - celery-test
   - my-redis-service
+

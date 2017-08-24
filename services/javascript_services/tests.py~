@@ -1,0 +1,9 @@
+import requests
+import json
+
+def test_pa11y():
+    header = {"Content-type": "application/json"}
+    payload = json.dumps({"domain":"whitehouse.gov"})
+    response = requests.get("http://localhost:8000",headers=header,data=payload)
+    assert isinstance(response.text, str)
+    assert response.status_code == 200

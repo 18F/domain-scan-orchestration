@@ -1,0 +1,24 @@
+{
+  "name": "javascript_services",
+  "version": "1.0.0",
+  "description": "javascript services for domain-scan-orchestration",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/18F/domain-scan-orchestration.git"
+  },
+  "author": "Eric Schles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/18F/domain-scan-orchestration/issues"
+  },
+  "homepage": "https://github.com/18F/domain-scan-orchestration#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "pa11y": "^4.12.1"
+  }
+}

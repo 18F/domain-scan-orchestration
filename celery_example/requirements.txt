@@ -11,3 +11,4 @@ gunicorn
 celery
 cfenv
 redis
+pandas

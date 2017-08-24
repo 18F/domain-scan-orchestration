@@ -1,0 +1,5 @@
+---
+buildpack: nodejs_buildpack
+applications:
+- name: domain-scan-javascript-services
+  memory: 128M
