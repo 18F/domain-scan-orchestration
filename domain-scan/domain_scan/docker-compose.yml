@@ -1,5 +1,0 @@
-scan:
-  env_file: .env
-  build: .
-  volumes:
-    - ./:/home/scanner

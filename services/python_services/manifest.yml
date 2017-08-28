@@ -2,3 +2,4 @@
 buildpack: python_buildpack
 applications:
 - name: domain-scan-python-services
+  memory: 128M
