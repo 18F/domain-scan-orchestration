@@ -8,6 +8,7 @@ strict-rfc3339
 pyyaml
 click
 -e git+git://github.com/EricSchles/test_command.git#egg=test_command
+-e git+git://github.com/EricSchles/pshtt_command.git#egg=pshtt_command
 # to support sslyze scanner
 sslyze
 cryptography
