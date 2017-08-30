@@ -4,7 +4,7 @@ import os
 from celery import Celery
 from .env import env
 from celery.schedules import crontab
-
+import cfenv
 
 def make_celery(app):
     celery = Celery(app.name, backend=app.config['result_backend'],
@@ -43,6 +43,7 @@ app.config.update(
     result_backend=redis_url
 )
 
+env = cfenv.AppEnv()
 db = SQLAlchemy(app)
 port = os.getenv("PORT", "5000")
 app.config["PORT"] = int(port)

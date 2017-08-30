@@ -7,7 +7,7 @@ from app import celery_obj
 import pandas as pd
 import os
 import datetime as dt
-from app.tasks import uswds
+from app.tasks import uswds, gatherer
 
 ALLOWED_EXTENSIONS = set(['csv'])
 
@@ -60,3 +60,10 @@ def kick_off():
     """
     uswds.delay()
     return "scanners engaged"
+
+@app.route("/gather", methods=["GET","POST"])
+def gather():
+    # fix this
+    result = gatherer.delay()
+    # this should go to a public s3 bucket
+    return result

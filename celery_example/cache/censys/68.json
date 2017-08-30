@@ -1,0 +1,1306 @@
+[
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "landacquisition.dnr.in.gov",
+      "www.landacquisition.dnr.in.gov"
+    ],
+    "parsed.subject.common_name": [
+      "landacquisition.dnr.in.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.ameslab.gov",
+      "ameslab.gov",
+      "al-iproxy.ameslab.gov",
+      "algproxy.ameslab.gov",
+      "algproxy2.ameslab.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.ameslab.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "glakesonline.nos.noaa.gov",
+      "www.glakesonline.nos.noaa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "glakesonline.nos.noaa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "magik20qa.dcs.in.gov",
+      "www.magik20qa.dcs.in.gov"
+    ],
+    "parsed.subject.common_name": [
+      "magik20qa.dcs.in.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.nci.nih.gov",
+      "nci.nih.gov",
+      "trials.nci.nih.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.nci.nih.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "webmail.seviercountytn.org",
+      "autodiscover.seviercountytn.org",
+      "exch01.seviercountytn.org",
+      "webmail.seviercountytn.gov",
+      "autodiscover.seviercountytn.gov",
+      "ex2013.seviercountytn.org"
+    ],
+    "parsed.subject.common_name": [
+      "webmail.seviercountytn.org"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "osa.gisdata.mn.gov",
+      "www.osa.gisdata.mn.gov"
+    ],
+    "parsed.subject.common_name": [
+      "osa.gisdata.mn.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "internalmftuat.in.gov",
+      "www.internalmftuat.in.gov"
+    ],
+    "parsed.subject.common_name": [
+      "internalmftuat.in.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "iarpa-ideas.gov",
+      "www.iarpa-ideas.gov"
+    ],
+    "parsed.subject.common_name": [
+      "iarpa-ideas.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "sccmp02.iot.in.gov",
+      "www.sccmp02.iot.in.gov"
+    ],
+    "parsed.subject.common_name": [
+      "sccmp02.iot.in.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "www.octylerweb.orangecountyva.gov",
+      "octylerweb.orangecountyva.gov"
+    ],
+    "parsed.subject.common_name": [
+      "www.octylerweb.orangecountyva.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.nci.nih.gov",
+      "nci.nih.gov",
+      "mcl.nci.nih.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.nci.nih.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "osa.gisdata.mn.gov",
+      "www.osa.gisdata.mn.gov"
+    ],
+    "parsed.subject.common_name": [
+      "osa.gisdata.mn.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "clearinghouse.marinedebris.noaa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "clearinghouse.marinedebris.noaa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "www.nlm.nih.gov",
+      "nlm.nih.gov"
+    ],
+    "parsed.subject.common_name": [
+      "www.nlm.nih.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "extdev.fas.gsa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "extdev.fas.gsa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "alabamacares-qa.alabama.gov"
+    ],
+    "parsed.subject.common_name": [
+      "alabamacares-qa.alabama.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "NYCSOFinance.ny.gov"
+    ],
+    "parsed.subject.common_name": [
+      "NYCSOFinance.ny.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "socialwork.alabama.gov"
+    ],
+    "parsed.subject.common_name": [
+      "socialwork.alabama.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "tsgw.pnl.gov"
+    ],
+    "parsed.subject.common_name": [
+      "tsgw.pnl.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "www.Foodlims.pa.gov",
+      "www.foodlims.state.pa.us",
+      "Foodlims.pa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "www.Foodlims.pa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "www.adpacis.ph.lacounty.gov",
+      "adpacis.ph.lacounty.gov"
+    ],
+    "parsed.subject.common_name": [
+      "www.adpacis.ph.lacounty.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "vpnportal-dev-alx.uspto.gov",
+      "CASA-ITW-VPN.uspto.gov",
+      "vpnportal-dev.uspto.gov",
+      "webmail-sd.uspto.gov"
+    ],
+    "parsed.subject.common_name": [
+      "vpnportal-dev-alx.uspto.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.sanmarcostx.gov",
+      "sanmarcostx.gov",
+      "mail.sanmarcostx.gov",
+      "cyrus.sanmarcostx.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.sanmarcostx.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "connect-doj-o365.justice.gov"
+    ],
+    "parsed.subject.common_name": [
+      "connect-doj-o365.justice.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "owa.tlc.texas.gov",
+      "owa.tlc.state.tx.us"
+    ],
+    "parsed.subject.common_name": [
+      "owa.tlc.state.tx.us"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "ksvrvwebtest.kdheks.gov"
+    ],
+    "parsed.subject.common_name": [
+      "ksvrvwebtest.kdheks.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "incapsula.com",
+      "*.1and1.ca",
+      "*.1and1.it",
+      "*.aaafx.com",
+      "*.abscodelivered.com.au",
+      "*.affiliate-robot.com",
+      "*.binary.windsorbrokers.com",
+      "*.binarybook.com",
+      "*.blipplay.com",
+      "*.booption.com",
+      "*.brycecourtenay.com",
+      "*.btrader24.com",
+      "*.carcraze.com.au",
+      "*.cherrytrade.com",
+      "*.cinavid.com",
+      "*.cloudbuilder.es",
+      "*.dollaplay.com",
+      "*.edgeoption.com",
+      "*.epestsupplies.com.au",
+      "*.finance.favbet.com",
+      "*.finpari.com",
+      "*.ftrade.com",
+      "*.geba.com",
+      "*.hdattack.com",
+      "*.hellobrokers.com",
+      "*.huntinghaven.com.au",
+      "*.idaplay.com",
+      "*.infinitecampus.net",
+      "*.integratedfm.es",
+      "*.itrip.net",
+      "*.itsupport.dunwoodyga.gov",
+      "*.jpf.go.jp",
+      "*.limaplay.com",
+      "*.luxvanna.com.au",
+      "*.mediaeel.com",
+      "*.mediamidi.com",
+      "*.metrobankonline.co.uk",
+      "*.milanotrader.com",
+      "*.mnd.gov.sg",
+      "*.myvidzone.com",
+      "*.mywallstreet24.com",
+      "*.nantucketbank.com",
+      "*.nea.gov.sg",
+      "*.optionmart.net",
+      "*.protinting.com.au",
+      "*.serenataflowers.com",
+      "*.shopwss.com",
+      "*.swissroyalbanc.com",
+      "*.tasmaniangourmetgifts.com.au",
+      "*.thetannery.com.au",
+      "*.theworldofbrycecourtenay.com",
+      "*.vidzworld.com",
+      "*.weathika.com",
+      "*.wshc.sg",
+      "*.yamaha-motor.co.jp",
+      "1and1.ca",
+      "abscodelivered.com.au",
+      "affiliate-robot.com",
+      "ausims.com.au",
+      "binary.windsorbrokers.com",
+      "binarybook.com",
+      "blipplay.com",
+      "booption.com",
+      "brycecourtenay.com",
+      "btrader24.com",
+      "carcraze.com.au",
+      "cherrytrade.com",
+      "cinavid.com",
+      "cloudbuilder.es",
+      "dollaplay.com",
+      "edgeoption.com",
+      "epestsupplies.com.au",
+      "ftrade.com",
+      "geba.com",
+      "hdattack.com",
+      "hellobrokers.com",
+      "huntinghaven.com.au",
+      "idaplay.com",
+      "infinitecampus.net",
+      "integratedfm.es",
+      "itrip.net",
+      "itsupport.dunwoodyga.gov",
+      "jpf.go.jp",
+      "limaplay.com",
+      "luxvanna.com.au",
+      "mediaeel.com",
+      "mediamidi.com",
+      "metrobankonline.co.uk",
+      "milanotrader.com",
+      "myvidzone.com",
+      "mywallstreet24.com",
+      "nantucketbank.com",
+      "nea.gov.sg",
+      "online-top-up.digicelgroup.com",
+      "online.oneservice.gov.sg",
+      "optionmart.net",
+      "otupc.digicelgroup.com",
+      "protinting.com.au",
+      "selfservice.metrobankonline.co.uk",
+      "serenataflowers.com",
+      "shopwss.com",
+      "swissroyalbanc.com",
+      "tasmaniangourmetgifts.com.au",
+      "thetannery.com.au",
+      "theworldofbrycecourtenay.com",
+      "vidzworld.com",
+      "weathika.com",
+      "wshc.sg",
+      "www.ausims.com.au",
+      "yamaha-motor.co.jp"
+    ],
+    "parsed.subject.common_name": [
+      "incapsula.com"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "edte-gateway1.nrc.gov"
+    ],
+    "parsed.subject.common_name": [
+      "edte-gateway1.nrc.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.brevardfl.gov",
+      "brevardfl.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.brevardfl.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.health.azdhs.gov",
+      "health.azdhs.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.health.azdhs.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "perf.issuerportal.kynect.ky.gov"
+    ],
+    "parsed.subject.common_name": [
+      "perf.issuerportal.kynect.ky.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "srqwebgui.sc.gov"
+    ],
+    "parsed.subject.common_name": [
+      "srqwebgui.sc.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "ppirs.ppirs.gov",
+      "www.ppirs.ppirs.gov"
+    ],
+    "parsed.subject.common_name": [
+      "ppirs.ppirs.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "betterbuildingsinitiative.energy.gov"
+    ],
+    "parsed.subject.common_name": [
+      "betterbuildingsinitiative.energy.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "landsat.usgs.gov"
+    ],
+    "parsed.subject.common_name": [
+      "landsat.usgs.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "hbc.ky.gov"
+    ],
+    "parsed.subject.common_name": [
+      "hbc.ky.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "ethicstraining.od.nih.gov",
+      "www.ethicstraining.od.nih.gov"
+    ],
+    "parsed.subject.common_name": [
+      "ethicstraining.od.nih.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "fscit.ky.gov"
+    ],
+    "parsed.subject.common_name": [
+      "fscit.ky.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "pics.olao.od.nih.gov",
+      "www.pics.olao.od.nih.gov"
+    ],
+    "parsed.subject.common_name": [
+      "pics.olao.od.nih.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "rp.dti.delaware.gov",
+      "securemail-storage.delaware.gov",
+      "securemail-svc.delaware.gov",
+      "read.securemail.delaware.gov",
+      "securemail.delaware.gov",
+      "owa.delaware.gov",
+      "eas.owa.delaware.gov",
+      "owa.cj.state.de.us",
+      "meet.state.de.us",
+      "owa.state.de.us",
+      "owas.state.de.us",
+      "autodiscover.state.de.us",
+      "lyncdovpoolwebext.state.de.us",
+      "lyncdiscover.state.de.us",
+      "adfs.dti.delaware.gov",
+      "lyncbiggspoolwebext.state.de.us",
+      "dialin.state.de.us",
+      "dialin.state.de.gov",
+      "pilotlync.state.de.gov",
+      "owas.state.de.gov",
+      "autodiscover.state.de.gov",
+      "meet.state.de.gov",
+      "owa.state.de.gov",
+      "directaccess.delaware.gov",
+      "pilotlyncext.state.de.gov",
+      "adfs.state.de.gov",
+      "pki.state.de.us",
+      "adfs.state.de.us",
+      "outlook.k12.de.us",
+      "ews.state.de.us",
+      "adfs.cj.state.de.us"
+    ],
+    "parsed.subject.common_name": [
+      "rp.dti.delaware.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "DMVMove.dmv.virginia.gov"
+    ],
+    "parsed.subject.common_name": [
+      "DMVMove.dmv.virginia.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "prattvilleal.gov",
+      "www.prattvilleal.gov"
+    ],
+    "parsed.subject.common_name": [
+      "prattvilleal.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "secure.dshs.wa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "secure.dshs.wa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "bluelakerancheria-nsn.gov",
+      "mail.bluelakerancheria-nsn.gov",
+      "www.bluelakerancheria-nsn.gov"
+    ],
+    "parsed.subject.common_name": [
+      "bluelakerancheria-nsn.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "www.palimsreports.health.pa.gov",
+      "palimsreports.health.pa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "www.palimsreports.health.pa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "aeronet-rdb.gsfc.nasa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "aeronet-rdb.gsfc.nasa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "big-hvac.bloomingtonmn.gov"
+    ],
+    "parsed.subject.common_name": [
+      "big-hvac.bloomingtonmn.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.fr-stage.cloud.gov",
+      "fr-stage.cloud.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.fr-stage.cloud.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "ecf-train.sdb.uscourts.gov"
+    ],
+    "parsed.subject.common_name": [
+      "ecf-train.sdb.uscourts.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "outgassing.nasa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "outgassing.nasa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "appealsonline.dhs.tn.gov",
+      "www.appealsonline.dhs.tn.gov"
+    ],
+    "parsed.subject.common_name": [
+      "appealsonline.dhs.tn.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "phprsurveys.cdc.gov"
+    ],
+    "parsed.subject.common_name": [
+      "phprsurveys.cdc.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "westernstatehospital.ky.gov"
+    ],
+    "parsed.subject.common_name": [
+      "westernstatehospital.ky.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "vso1.nascom.nasa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "vso1.nascom.nasa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "macombvitals.macombcountymi.gov",
+      "www.macombvitals.macombcountymi.gov"
+    ],
+    "parsed.subject.common_name": [
+      "macombvitals.macombcountymi.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "hopkinscounty.ky.gov",
+      "www.hopkinscounty.ky.gov"
+    ],
+    "parsed.subject.common_name": [
+      "hopkinscounty.ky.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "liens.greshamoregon.gov"
+    ],
+    "parsed.subject.common_name": [
+      "liens.greshamoregon.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.fltops.jpl.nasa.gov",
+      "fltops.jpl.nasa.gov",
+      "jnorampage.fltops.jpl.nasa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.fltops.jpl.nasa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "5692462144159744-fe3.pantheonsite.io",
+      "akmeier.lbl.gov",
+      "broadly.com",
+      "btus.lbl.gov",
+      "buildings.lbl.gov",
+      "dev-exchange-i.devportal.apigee.io",
+      "dev-exp-global-nonprod.devportal.apigee.io",
+      "dev-shopcc.vtl.io",
+      "dev.royalcyber.com",
+      "dev.wildwomenontop.com",
+      "digitalgood.undp.org",
+      "drupalcampgdl.com",
+      "duckcommander.com",
+      "dwhvabmm6c0w.cloudfront.net",
+      "eltoncairns.lbl.gov",
+      "eta.lbl.gov",
+      "images.abccolumbia.com",
+      "jacksonfamilywines.com",
+      "knowyourotcs.org",
+      "live-invitemanager.devportal.apigee.io",
+      "live-moneysupermarket.devportal.apigee.io",
+      "live-telstrawholesale.devportal.apigee.io",
+      "livingoceansfoundation.org",
+      "loveonetoday.com",
+      "members.safekids.org",
+      "mexiconuevaera.com",
+      "oceanit.com",
+      "redproteccionsocial.org",
+      "research.freepatentsonline.com",
+      "royalcyber.com",
+      "socialprotectionet.org",
+      "staging.furiosovineyard.com",
+      "staging.mountmadonnaschool.org",
+      "test-th-innovation.devportal.apigee.io",
+      "test.jacksonfamilywines.com",
+      "test.snowseekers.ca",
+      "thalhimer.com",
+      "www.abccolumbia.com",
+      "www.drupalcampgdl.com",
+      "www.duckcommander.com",
+      "www.jacksonfamilywines.com",
+      "www.knowyourotcs.org",
+      "www.livingoceansfoundation.org",
+      "www.loveonetoday.com",
+      "www.oceanit.com",
+      "www.redproteccionsocial.org",
+      "www.royalcyber.com",
+      "www.sheetmetal5.org",
+      "www.smart-local.org",
+      "www.socialprotectionet.org",
+      "www.test.jacksonfamilywines.com",
+      "www.thalhimer.com",
+      "www.triplo.co",
+      "www.yesct.io",
+      "yesct.io"
+    ],
+    "parsed.subject.common_name": [
+      "5692462144159744-fe3.pantheonsite.io"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "acquia-sites.com",
+      "www.historytoday.com",
+      "www.rifftrax.com",
+      "ussecstg.prod.acquia-sites.com",
+      "auth.rcmusic.ca",
+      "performance.rcmusic.ca",
+      "www.extension.harvard.edu",
+      "novusstg.prod.acquia-sites.com",
+      "www.summer.harvard.edu",
+      "stage.rita.dot.gov",
+      "ifcj.prod.acquia-sites.com",
+      "www.theblessedlife.com",
+      "preparecenter.org",
+      "stg.preparecenter.org",
+      "dev.carilionclinic.org",
+      "staging.carilionclinic.org",
+      "www.unavidadebendicion.com",
+      "radash.acquia.com",
+      "carilionclinic.org",
+      "www.carilionclinic.org",
+      "carilion.com",
+      "www.carilion.com",
+      "intralinks.com",
+      "wwwstage.intralinks.com",
+      "staging.autismspeaks.org",
+      "fsg.org",
+      "www.fsg.org",
+      "buytaert.net",
+      "www.buytaert.net",
+      "www.usnrc-ramp.com",
+      "messagesystems.com",
+      "www-sys.iesabroad.org",
+      "www-uat.iesabroad.org",
+      "essent.us",
+      "www.essent.us",
+      "www-stage.essent.us",
+      "www-dev.essent.us",
+      "drupal.com",
+      "www.drupal.com",
+      "gatewaypeople.com",
+      "enercare.ca",
+      "www.enercare.ca",
+      "demo.globalcanvaseducation.com",
+      "globalcanvaseducation.com",
+      "discovernursing.com",
+      "www.discovernursing.com",
+      "globalscape.com",
+      "www.globalscape.com",
+      "auth.globalcanvaseducation.com",
+      "campaignfornursing.com",
+      "www.campaignfornursing.com",
+      "kripalu.org",
+      "www.kripalu.org",
+      "playbook.pdms.jnj.com",
+      "gbpbrandinspector.com",
+      "www.gbpbrandinspector.com",
+      "schoology1.prod.acquia-sites.com",
+      "taboola.com",
+      "www.jjdi.com",
+      "firstdentalhealth.com",
+      "westfield-bank.com",
+      "kronosconference.com",
+      "enernoc.com",
+      "jjdi.com",
+      "potsdam.edu",
+      "www.potsdam.edu",
+      "aveenomd.com",
+      "www.energysmart.enernoc.com",
+      "energysmart.enernoc.com",
+      "www.university.enernoc.com",
+      "university.enernoc.com",
+      "stage.intralinks.com",
+      "www.intralinks.com",
+      "ccr.lge-ku.com",
+      "corpwebdev.lge-ku.com",
+      "corpwebtest.lge-ku.com"
+    ],
+    "parsed.subject.common_name": [
+      "acquia-sites.com"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.pr.gov",
+      "pr.gov",
+      "arra.pr.gov",
+      "www.arra.pr.gov",
+      "hacienda.pr.gov",
+      "www.hacienda.pr.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.pr.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "5692462144159744-fe3.pantheonsite.io",
+      "akmeier.lbl.gov",
+      "broadly.com",
+      "btus.lbl.gov",
+      "buildings.lbl.gov",
+      "dev-exp-global-nonprod.devportal.apigee.io",
+      "dev-shopcc.vtl.io",
+      "dev.royalcyber.com",
+      "dev.wildwomenontop.com",
+      "digitalgood.undp.org",
+      "drupalcampgdl.com",
+      "duckcommander.com",
+      "dwhvabmm6c0w.cloudfront.net",
+      "eltoncairns.lbl.gov",
+      "eta.lbl.gov",
+      "images.abccolumbia.com",
+      "jacksonfamilywines.com",
+      "knowyourotcs.org",
+      "live-invitemanager.devportal.apigee.io",
+      "live-moneysupermarket.devportal.apigee.io",
+      "live-telstrawholesale.devportal.apigee.io",
+      "livingoceansfoundation.org",
+      "loveonetoday.com",
+      "members.safekids.org",
+      "mexiconuevaera.com",
+      "oceanit.com",
+      "redproteccionsocial.org",
+      "research.freepatentsonline.com",
+      "royalcyber.com",
+      "socialprotectionet.org",
+      "staging.furiosovineyard.com",
+      "staging.mountmadonnaschool.org",
+      "test.jacksonfamilywines.com",
+      "test.snowseekers.ca",
+      "thalhimer.com",
+      "www.abccolumbia.com",
+      "www.drupalcampgdl.com",
+      "www.duckcommander.com",
+      "www.jacksonfamilywines.com",
+      "www.knowyourotcs.org",
+      "www.livingoceansfoundation.org",
+      "www.loveonetoday.com",
+      "www.oceanit.com",
+      "www.redproteccionsocial.org",
+      "www.royalcyber.com",
+      "www.sheetmetal5.org",
+      "www.smart-local.org",
+      "www.socialprotectionet.org",
+      "www.test.jacksonfamilywines.com",
+      "www.thalhimer.com",
+      "www.triplo.co",
+      "www.yesct.io",
+      "yesct.io"
+    ],
+    "parsed.subject.common_name": [
+      "5692462144159744-fe3.pantheonsite.io"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "election.bouldercolorado.gov",
+      "www.election.bouldercolorado.gov"
+    ],
+    "parsed.subject.common_name": [
+      "election.bouldercolorado.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "pages.18f.gov"
+    ],
+    "parsed.subject.common_name": [
+      "pages.18f.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "bookstore.theacademy.ca.gov"
+    ],
+    "parsed.subject.common_name": [
+      "bookstore.theacademy.ca.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "outdooreducation.dnr.in.gov",
+      "www.outdooreducation.dnr.in.gov"
+    ],
+    "parsed.subject.common_name": [
+      "outdooreducation.dnr.in.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "www.frpg.gov",
+      "frpg.gov"
+    ],
+    "parsed.subject.common_name": [
+      "www.frpg.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.jpl.nasa.gov",
+      "jpl.nasa.gov",
+      "airsnrt.jpl.nasa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.jpl.nasa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "mail.monroecountypa.gov",
+      "www.mail.monroecountypa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "mail.monroecountypa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "datapreview.sec.gov",
+      "www.datapreview.sec.gov"
+    ],
+    "parsed.subject.common_name": [
+      "datapreview.sec.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "5759180434571264-fe2.pantheonsite.io",
+      "azauditor.gov",
+      "containerchain.my",
+      "da-com.com",
+      "discovere.org",
+      "eta-intranet.lbl.gov",
+      "greatnortherncatskills.com",
+      "imagejournal.org",
+      "intra.agiconstruction.com",
+      "intranet.revolution.com",
+      "login.imagejournal.org",
+      "msdsdigital.com",
+      "nectagen.com",
+      "pbcrc.com.au",
+      "preventioninstitute.org",
+      "reachtheworld.org",
+      "rhombusenergysolutions.com",
+      "test-transport.ideal-ist.eu",
+      "testmg-australia-cms.dixonvalve.com",
+      "testmg-canada-cms.dixonvalve.com",
+      "testmg-china-cms.dixonvalve.com",
+      "testmg-cms.dixonvalve.com",
+      "testmg-denmark-cms.dixonvalve.com",
+      "testmg-europe-cms.dixonvalve.com",
+      "testmg-finland-cms.dixonvalve.com",
+      "testmg-india-cms.dixonvalve.com",
+      "testmg-ireland-cms.dixonvalve.com",
+      "testmg-middle-east-cms.dixonvalve.com",
+      "testmg-middleeast-cms.dixonvalve.com",
+      "testmg-norway-cms.dixonvalve.com",
+      "testmg-singapore-cms.dixonvalve.com",
+      "testmg-southamerica-cms.dixonvalve.com",
+      "testmg-sweden-cms.dixonvalve.com",
+      "time.revolution.com",
+      "usherwood.com",
+      "www.azauditor.gov",
+      "www.containerchain.my",
+      "www.crcplantbiosecurity.com.au",
+      "www.da-com.com",
+      "www.discovere.org",
+      "www.greatnortherncatskills.com",
+      "www.imagejournal.org",
+      "www.intra.agiconstruction.com",
+      "www.intranet.revolution.com",
+      "www.msdsdigital.com",
+      "www.nectagen.com",
+      "www.pbcrc.com.au",
+      "www.playfitstayfit.org",
+      "www.preventioninstitute.org",
+      "www.reachtheworld.org",
+      "www.rhombusenergysolutions.com",
+      "www.time.revolution.com",
+      "www.usherwood.com"
+    ],
+    "parsed.subject.common_name": [
+      "5759180434571264-fe2.pantheonsite.io"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "ecf-test.nced.uscourts.gov"
+    ],
+    "parsed.subject.common_name": [
+      "ecf-test.nced.uscourts.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "eo.azgovernor.gov",
+      "www.goeaa.azgovernor.gov",
+      "www.aging.azgovernor.gov",
+      "ospb.azgovernor.gov",
+      "www.ospb.azgovernor.gov",
+      "gotr.azgovernor.gov",
+      "azgovernor.gov",
+      "aging.azgovernor.gov",
+      "www.bc.azgovernor.gov",
+      "www.azgovernor.gov",
+      "bc.azgovernor.gov",
+      "education.azgovernor.gov",
+      "www.eo.azgovernor.gov",
+      "goeaa.azgovernor.gov",
+      "www.gotr.azgovernor.gov",
+      "*.azgovernor.gov",
+      "www.education.azgovernor.gov"
+    ],
+    "parsed.subject.common_name": [
+      "azgovernor.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "extds.dev.nsf.gov"
+    ],
+    "parsed.subject.common_name": [
+      "extds.dev.nsf.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "he.medi-cal.ca.gov"
+    ],
+    "parsed.subject.common_name": [
+      "he.medi-cal.ca.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "efsas.avs.faa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "efsas.avs.faa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "remoteaccess.dors.md.gov"
+    ],
+    "parsed.subject.common_name": [
+      "remoteaccess.dors.md.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "*.logancountyco.gov",
+      "logancountyco.gov"
+    ],
+    "parsed.subject.common_name": [
+      "*.logancountyco.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "accountsrss.calpers.ca.gov"
+    ],
+    "parsed.subject.common_name": [
+      "accountsrss.calpers.ca.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "autodiscover.notes.bart.gov"
+    ],
+    "parsed.subject.common_name": [
+      "autodiscover.notes.bart.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "fistools.fas.gsa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "fistools.fas.gsa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "awaappscls2.faa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "awaappscls2.faa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "minnesota.feb.gov"
+    ],
+    "parsed.subject.common_name": [
+      "minnesota.feb.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "ipages.nist.gov"
+    ],
+    "parsed.subject.common_name": [
+      "ipages.nist.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "letraining.adv.training.nij.gov"
+    ],
+    "parsed.subject.common_name": [
+      "letraining.adv.training.nij.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "enilesp.sba.gov"
+    ],
+    "parsed.subject.common_name": [
+      "enilesp.sba.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "es-cfm.it.anl.gov",
+      "ht-elec-0.it.anl.gov",
+      "ht-elec-1.it.anl.gov"
+    ],
+    "parsed.subject.common_name": [
+      "es-cfm.it.anl.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "www.scd.uscourts.gov"
+    ],
+    "parsed.subject.common_name": [
+      "www.scd.uscourts.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "e2-satotravel-signing.sm.faa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "e2-satotravel-signing.sm.faa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "remoteaccess.dgs.md.gov"
+    ],
+    "parsed.subject.common_name": [
+      "remoteaccess.dgs.md.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "Broadridge.MTST-DOC1-APP.tsp.gov"
+    ],
+    "parsed.subject.common_name": [
+      "Broadridge.MTST-DOC1-APP.tsp.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "mailgateway-bak.anl.gov"
+    ],
+    "parsed.subject.common_name": [
+      "mailgateway-bak.anl.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "apps.oregon.gov",
+      "oregoneft.net",
+      "cdn.oregon.gov"
+    ],
+    "parsed.subject.common_name": [
+      "oregoneft.net"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "mock-my.uscis.dhs.gov",
+      "nccic.dhs.gov",
+      "preview.uscis.gov",
+      "cisombvos.dhs.gov",
+      "agents.floodsmart.gov",
+      "beta.fema.gov",
+      "preview-everify.uscis.gov",
+      "alpha.uscis.gov",
+      "www.safecomprogram.gov",
+      "preview1.us-cert.gov",
+      "careers.fema.gov",
+      "www.biometrics.gov",
+      "www.ics-cert.us-cert.gov",
+      "preview.disasterassistance.gov",
+      "preview.cbp.gov",
+      "www.agents.floodsmart.gov",
+      "www.cyber.st.dhs.gov",
+      "integration.fema.gov",
+      "www.floodsmart.gov",
+      "www.buildsecurityin.us-cert.gov",
+      "preview-studyinthestates.dhs.gov",
+      "beta.tsa.gov",
+      "buildsecurityin.us-cert.gov",
+      "tdl.apps.fema.gov",
+      "www.uscis.gov",
+      "www.uscg.mil",
+      "preview.fletc.gov",
+      "sharedservices.dhs.gov",
+      "preview.ice.gov",
+      "preview.fema.gov",
+      "beta.uscis.gov",
+      "www.infopass.uscis.gov",
+      "mobilecoe.dhs.gov",
+      "wcmaas.dhs.gov",
+      "everify.uscis.gov",
+      "beta.ready.gov",
+      "carwash.dhs.gov",
+      "my.uscis.gov",
+      "www.citizencorps.gov",
+      "wcmaas.homelandsecurity.gov",
+      "apps.fema.gov",
+      "www.llis.gov",
+      "preview-careers.fema.gov",
+      "www.llis.dhs.gov",
+      "ics-cert.us-cert.gov",
+      "preview.fleta.gov",
+      "tdl.integration.fema.gov",
+      "preprod-selfcheck.uscis.gov",
+      "infopass.uscis.gov",
+      "www.nfip.fema.gov",
+      "preview.dhs.gov"
+    ],
+    "parsed.subject.common_name": [
+      "preview.dhs.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "find.faa.gov"
+    ],
+    "parsed.subject.common_name": [
+      "find.faa.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "www.bpci.cms.gov"
+    ],
+    "parsed.subject.common_name": [
+      "www.bpci.cms.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "lists.anl.gov"
+    ],
+    "parsed.subject.common_name": [
+      "lists.anl.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "im-chat.dhs.gov"
+    ],
+    "parsed.subject.common_name": [
+      "im-chat.dhs.gov"
+    ]
+  },
+  {
+    "parsed.extensions.subject_alt_name.dns_names": [
+      "bsdqa.sos.in.gov",
+      "www.bsdqa.sos.in.gov"
+    ],
+    "parsed.subject.common_name": [
+      "bsdqa.sos.in.gov"
+    ]
+  }
+]

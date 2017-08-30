@@ -7,4 +7,4 @@ applications:
   # enforce a postgres database
   - celery-test
   - my-redis-service
-
+  - dotgov_subdomains
