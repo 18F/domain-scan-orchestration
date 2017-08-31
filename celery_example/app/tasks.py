@@ -108,6 +108,9 @@ def gatherer():
     df = pd.DataFrame(master_data)
     s = StringIO()
     df.to_csv(s)
+    csv_file_contents = s.getvalue()
+    bucket_name = "dotgov_subdomains"
+    upload_to_s3(csv_file_contents, bucket_name)
     return s.getvalue()
 
     

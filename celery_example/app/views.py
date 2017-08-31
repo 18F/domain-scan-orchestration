@@ -64,6 +64,5 @@ def kick_off():
 @app.route("/gather", methods=["GET","POST"])
 def gather():
     # fix this
-    result = gatherer.delay()
-    # this should go to a public s3 bucket
-    return result
+    gatherer.delay()
+    return "success"
