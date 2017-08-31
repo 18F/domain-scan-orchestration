@@ -1,0 +1,12 @@
+---
+buildpack: python_buildpack
+applications:
+- name: celery-example-beat
+  memory: 128M
+  no-route: true
+  health-check-type: process
+  command: celery beat --app webservices.tasks
+  services:
+  # enforce a postgres database
+  - celery-test
+  - my-redis-service

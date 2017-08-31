@@ -1,0 +1,12 @@
+---
+buildpack: python_buildpack
+applications:
+- name: celery-example-worker
+  memory: 128M
+  no-route: true
+  health-check-type: process
+  command: celery worker -A app.celery --loglevel=info --concurrency 2
+  services:
+  # enforce a postgres database
+  - celery-test
+  - my-redis-service

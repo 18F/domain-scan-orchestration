@@ -1,0 +1,7 @@
+ipython
+requests
+strict-rfc3339
+sslyze
+cryptography
+censys
+six
