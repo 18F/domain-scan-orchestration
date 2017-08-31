@@ -6,6 +6,10 @@ import pandas as pd
 from io import StringIO
 from app import censys_api
 import requests
+import json
+import os
+import boto
+from boto.s3.key import Key
 
 @celery_obj.task
 def uswds():
@@ -35,6 +39,27 @@ def string_to_df_to_list(string):
     data = StringIO(string)
     df = pd.read_csv(data, sep=",")
     return list(df["Domain Name"])
+
+def upload_to_s3(csv_file_contents, bucket_name):
+    vcap_services = os.getenv("VCAP_SERVICES")
+    vcap_services = json.loads(vcap_services)
+    bucket = vcap["s3"][0]["credentials"]["bucket"]
+    access_key_id = vcap["s3"][0]["credentials"]["access_key_id"]
+    region = vcap["s3"][0]["credentials"]["region"]
+    secret_access_key = vcap["s3"][0]["credentials"]["secret_access_key"]
+    connection = boto.s3.connect_to_region(
+        region,
+        access_key_id,
+        secret_access_key
+    )
+    bucket = connection.get_bucket(bucket)
+    key = Key(bucket=bucket, name=bucket_name)
+    f = StringIO(csv_file_contents)
+    try:
+        key.send_file(f)
+        return "success"
+    except:
+        return "failed"
     
 @celery_obj.task
 def gatherer():
@@ -42,12 +67,7 @@ def gatherer():
     Grabs from dap, censys, eot2016, and parent domains of .gov
     """
     data = {}
-    options = {
-        "censys_id":"f6a75a5d-2795-4cc3-b629-62a9f49a6e18",
-        "censys_key":"ANQVleWLzUbvQ1WkT9gFPWhEcDRPqvTX",
-        "query":"parsed.subject.common_name:/gov/ or parsed.extensions.subject_alt_name.dns_names:/gov/",
-        "end":5
-    }
+    options = json.load(open("options.creds","r"))
     censys_list = censys_api.gather(".gov", options)
     censys_list = list(set(censys_list))
     censys_list = [elem for elem in censys_list if ".gov" in elem]
