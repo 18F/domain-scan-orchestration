@@ -52,7 +52,7 @@ app.config["HOST"] = "0.0.0.0"
 schedule = {
     "uswds": {
         # structure: file.function
-        "task": "tasks.uswds",
+        "task": "tasks.gatherer",
         "schedule": crontab(day_of_week=2),
     }
 }
@@ -62,7 +62,7 @@ UPLOAD_FOLDER = "csv_upload"
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["beat_schedule"] = schedule
-app.config["imports"] = ("tasks.uswds")
+app.config["imports"] = ("tasks.gatherer")
 app.config["task_acks_late"] = False
 
 celery_obj = make_celery(app)
