@@ -1,0 +1,4 @@
+import subprocess
+
+result = subprocess.run(["pshtt","whitehouse.gov","--json"], stdout=subprocess.PIPE)
+print(result.stdout.decode("utf-8"))

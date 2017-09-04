@@ -3,11 +3,10 @@ from app.models import Domains
 from app import db
 from flask import render_template, request, jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
-from app import celery_obj
 import pandas as pd
 import os
 import datetime as dt
-from app.tasks import uswds, gatherer
+from app.tasks import uswds, gatherer, dummy
 
 ALLOWED_EXTENSIONS = set(['csv'])
 
@@ -65,4 +64,9 @@ def kick_off():
 def gather():
     # fix this
     gatherer.delay()
+    return "success"
+
+@app.route("/dummy", methods=["GET","POST"])
+def dum():
+    dummy.delay()
     return "success"

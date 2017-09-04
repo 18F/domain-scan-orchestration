@@ -1,7 +1,7 @@
 ---
 buildpack: python_buildpack
 applications:
-- name: celery-example
+- name: scheduler
   memory: 128M
   services:
   # enforce a postgres database

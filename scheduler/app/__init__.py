@@ -2,12 +2,12 @@ from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 import os
 from celery import Celery
-from .env import env
 from celery.schedules import crontab
 import cfenv
 
+
 def make_celery(app):
-    celery = Celery(app.name, backend=app.config['result_backend'],
+    celery = Celery('app.tasks', backend=app.config['result_backend'],
                     broker=app.config['CELERY_BROKER_URL'])
     celery.conf.update(app.config)
     TaskBase = celery.Task
@@ -34,9 +34,9 @@ def ensure_upload_folder():
 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+#app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 # the below line is for local development only
-#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
 redis_url = get_redis_url()
 app.config.update(
     CELERY_BROKER_URL=redis_url,
@@ -50,7 +50,7 @@ app.config["PORT"] = int(port)
 app.config["HOST"] = "0.0.0.0"
 
 schedule = {
-    "uswds": {
+    "gatherer": {
         # structure: file.function
         "task": "tasks.gatherer",
         "schedule": crontab(day_of_week=2),
@@ -65,6 +65,6 @@ app.config["beat_schedule"] = schedule
 app.config["imports"] = ("tasks.gatherer")
 app.config["task_acks_late"] = False
 
-celery_obj = make_celery(app)
+celery = make_celery(app)
 
 from app import views, models
