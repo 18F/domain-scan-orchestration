@@ -5,7 +5,7 @@ import time
 import datetime
 import json
 import logging
-from app import utils
+import utils
 from censys import certificates, export
 import censys
 
