@@ -1,18 +1,14 @@
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
 import os
 from celery import Celery
 from celery.schedules import crontab
 import cfenv
-import datetime as dt
 import pandas as pd
 from io import StringIO
 import requests
 import json
-import os
 import boto
 from boto.s3.key import Key
-from flask import render_template, request, jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
 import censys_api
 from github import Github
@@ -43,92 +39,13 @@ def get_redis_url():
     return env.get_credential('REDIS_URL', 'redis://localhost:6379')
 
 
-def ensure_upload_folder():
-    if not os.path.exists("csv_upload"):
-        os.mkdir("csv_upload")
-
-
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-# the below line is for local development only
-#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
 redis_url = get_redis_url()
 app.config.update(
     CELERY_BROKER_URL=redis_url,
     result_backend=redis_url
 )
 
-
-db = SQLAlchemy(app)
-port = os.getenv("PORT", "5000")
-app.config["PORT"] = int(port)
-app.config["HOST"] = "0.0.0.0"
-
-
-class Domains(db.Model):
-    """
-    This is where the list of current domains to scan is stored.
-    We can see when this domain was added to the list
-    
-    Parameters:
-    @domain - a domain to scan
-    
-    @timestamp - when the domain was added to the database
-    """
-    __tablename__ = "domains"
-    id = db.Column(db.Integer, primary_key=True)
-    domain = db.Column(db.String)
-    timestamp = db.Column(db.DateTime)
-    
-    def __init__(self, domain, timestamp):
-        self.domain = domain
-        self.timestamp = timestamp
-        
-    def __str__(self):
-        return "< domain: {}>".format(repr(self.domain))
-
-
-class USWDS(db.Model):
-    """
-    Information relating to scans for the us web design standards.
-    There will be multiple entries for the same domain, the only certain difference
-    will be the timestamp, which will be unique to each date a scan occurred.
-    ## The following 4 lines are not related to documentation, but are good thoughts
-    ## think about where to put this
-    I think it will be interesting to see the results of scans over time.
-    This way we can have a more informed security posture over time.
-    Additionally, this allows us to monitor whether things are
-    improving or getting worse.
-
-    Parameters:
-    @domain - the domain that was scanned
-    
-    @uswds - a boolean - 
-    The result of a scan. 
-    If True the web design standards are present on the homepage
-    
-    @https - a boolean - 
-    The result of a scan. 
-    If True the website's homepage responds to https requests
-    
-    @timestamp - a datetime object -
-    When the scan took place
-    """
-    __tablename__ = 'uswds'
-    id = db.Column(db.Integer, primary_key=True)
-    domain = db.Column(db.String)
-    uswds = db.Column(db.Boolean)
-    https = db.Column(db.Boolean)
-    timestamp = db.Column(db.DateTime)
-
-    def __init__(self, domain, uswds, https, timestamp):
-        self.domain = domain
-        self.uswds = uswds
-        self.https = https
-        self.timestamp = timestamp
-
-    def __str__(self):
-        return "< domain: {}".format(repr(self.domain))
 
 schedule = {
     "gatherer": {
@@ -141,41 +58,15 @@ schedule = {
     #}
 }
 
-ensure_upload_folder()
-UPLOAD_FOLDER = "csv_upload"
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+port = os.getenv("PORT", "5000")
+app.config["PORT"] = int(port)
+app.config["HOST"] = "0.0.0.0"
 app.config["beat_schedule"] = schedule
 #app.config["imports"] = ("gatherer")
 app.config["task_acks_late"] = False
 
 celery = make_celery(app)
-
-
-@celery.task(name="app.dummy")
-def dummy():
-    return "it worked!"
-
-
-@celery.task(name="app.uswds")
-def uswds():
-    """
-    Runs the us web design standards checker against the uploaded list of domains.
-    """
-    results = {}
-    for domain in Domains.query.all():
-        payload = {"domain":domain.domain}
-        headers = {"Content-Type":"application/json"}
-        result = requests.get(
-            "https://domain-scan-python-services.app.cloud.gov/services/web-design-standards",
-            params=payload,
-        headers=headers)
-        result = json.loads(result.text)
-        uswds = USWDS(domain.domain, result["uswds"], result["https"], dt.datetime.now())
-        db.session.add(uswds)
-        db.session.commit()
-        results[domain.domain] = result
-    return results #maybe?
 
 
 def string_to_list(string):
@@ -189,6 +80,7 @@ def string_to_df_to_list(string):
 
 
 def upload_to_s3(csv_file_contents, bucket_name):
+    # Not currently working
     bucket_creds = {
         "access_key_id": "",
         "additional_buckets": [],
@@ -286,58 +178,9 @@ def gatherer():
     return s.getvalue()
 
 
-ALLOWED_EXTENSIONS = set(['csv'])
-
-
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-def save_csv_to_db(file_path):
-    df = pd.read_csv(file_path)
-    for index in df.index:
-        # dt.datetime.now is bad, change this in the near future
-        domain = Domains(df.ix[index]["domain"], dt.datetime.now())
-        db.session.add(domain)
-        db.session.commit()
-
-
-@app.route("/initialize_database", methods=["GET","POST"])
-def init_db():
-    db.create_all()
-    return "database created"
-
-
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(file_path)
-            save_csv_to_db(file_path)
-            return render_template("index.html")
-    return render_template("index.html")
-
-
-@app.route("/kick_off", methods=["GET","POST"])
-def kick_off():
-    """
-    Kicks off a scan rather than waiting for the scheduler
-    """
-    uswds.delay()
-    return "scanners engaged"
+@app.route("/", methods=["GET","POST"])
+def index():
+    return "it worked!"
 
 
 @app.route("/gather", methods=["GET","POST"])
