@@ -1,17 +1,12 @@
-from app import celery_obj
-from app.models import Domains, USWDS
-from app import db
-import datetime as dt
-import pandas as pd
-from io import StringIO
-from app import censys_api
-import requests
-import json
-import os
-import boto
-from boto.s3.key import Key
+from app import celery
 
-@celery_obj.task
+
+@celery.task(name="tasks.dummy")
+def dummy():
+    return "it worked!"
+
+
+@celery.task(name="tasks.uswds")
 def uswds():
     """
     Runs the us web design standards checker against the uploaded list of domains.
@@ -61,7 +56,7 @@ def upload_to_s3(csv_file_contents, bucket_name):
     except:
         return "failed"
     
-@celery_obj.task
+@celery.task(name="tasks.gatherer")
 def gatherer():
     """
     Grabs from dap, censys, eot2016, and parent domains of .gov
@@ -113,5 +108,14 @@ def gatherer():
     upload_to_s3(csv_file_contents, bucket_name)
     return s.getvalue()
 
-    
+schedule = {
+    "gatherer": {
+        "task": "tasks.gatherer",
+        "schedule": crontab(day_of_week=2),
+    }
+}
+
+ensure_upload_folder()
+UPLOAD_FOLDER = "csv_upload"
+
 

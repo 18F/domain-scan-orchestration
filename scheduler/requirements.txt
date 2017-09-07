@@ -18,3 +18,4 @@ pandas
 cfenv
 strict_rfc3339
 censys
+PyGithub

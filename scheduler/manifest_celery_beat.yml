@@ -1,12 +1,11 @@
 ---
 buildpack: python_buildpack
 applications:
-- name: celery-example-worker
+- name: schedule-beat
   memory: 128M
   no-route: true
   health-check-type: process
-  command: celery worker -A app.celery --loglevel=info --concurrency 2
+  command: celery -A app.celery beat
   services:
   # enforce a postgres database
-  - celery-test
   - my-redis-service
