@@ -15,8 +15,11 @@ from boto.s3.key import Key
 from flask import render_template, request, jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
 import censys_api
+from github import Github
+from github import InputGitTreeElement
 
 env = cfenv.AppEnv()
+
 
 def make_celery(app):
     celery = Celery(app.import_name, backend=app.config['result_backend'],
@@ -46,9 +49,9 @@ def ensure_upload_folder():
 
 
 app = Flask(__name__)
-#app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 # the below line is for local development only
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
+#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
 redis_url = get_redis_url()
 app.config.update(
     CELERY_BROKER_URL=redis_url,
@@ -60,6 +63,7 @@ db = SQLAlchemy(app)
 port = os.getenv("PORT", "5000")
 app.config["PORT"] = int(port)
 app.config["HOST"] = "0.0.0.0"
+
 
 class Domains(db.Model):
     """
@@ -82,6 +86,7 @@ class Domains(db.Model):
         
     def __str__(self):
         return "< domain: {}>".format(repr(self.domain))
+
 
 class USWDS(db.Model):
     """
@@ -128,8 +133,12 @@ class USWDS(db.Model):
 schedule = {
     "gatherer": {
         "task": "app.gatherer",
-        "schedule": crontab(day_of_week=2),
-    }
+        "schedule": crontab(0, 0, day_of_week=2),
+    },
+    #"dummy": {
+    #	"task": "app.dummy",
+    #	"schedule": crontab(minute="*/1")
+    #}
 }
 
 ensure_upload_folder()
@@ -172,24 +181,30 @@ def uswds():
 def string_to_list(string):
     return string.split("\n")
 
+
 def string_to_df_to_list(string):
     data = StringIO(string)
     df = pd.read_csv(data, sep=",")
     return list(df["Domain Name"])
 
+
 def upload_to_s3(csv_file_contents, bucket_name):
+    bucket_creds = {
+        "access_key_id": "",
+        "additional_buckets": [],
+        "bucket": "",
+        "region": "",
+        "secret_access_key": "" 
+    }
     vcap_services = os.getenv("VCAP_SERVICES")
-    vcap_services = json.loads(vcap_services)
-    bucket = vcap["s3"][0]["credentials"]["bucket"]
-    access_key_id = vcap["s3"][0]["credentials"]["access_key_id"]
-    region = vcap["s3"][0]["credentials"]["region"]
-    secret_access_key = vcap["s3"][0]["credentials"]["secret_access_key"]
+    bucket_creds = json.loads(vcap_services)
     connection = boto.s3.connect_to_region(
-        region,
-        access_key_id,
-        secret_access_key
+        bucket_creds["region"],
+        aws_access_key_id=bucket_creds["access_key_id"],
+        aws_secret_access_key=bucket_creds["secret_access_key"],
+        is_secure=True
     )
-    bucket = connection.get_bucket(bucket)
+    bucket = connection.get_bucket(bucket_creds["bucket"])
     key = Key(bucket=bucket, name=bucket_name)
     f = StringIO(csv_file_contents)
     try:
@@ -197,13 +212,35 @@ def upload_to_s3(csv_file_contents, bucket_name):
         return "success"
     except:
         return "failed"
-    
+
+
+def pushing_to_github(csv_file_contents):
+    token = json.load(open("github_token.creds","r"))
+    g = Github(token)
+    #repo = g.get_user().get_repo('domain-scan-orchestration')
+    org = [org for org in list(g.get_user().get_orgs()) if "18F" in org.url][0]
+    repo = org.get_repo('domain-scan-orchestration')
+    github_object = [InputGitTreeElement(
+        'data/domain-list.csv', 
+        '100644', 
+        'blob', 
+        csv_file_contents)
+    ]
+    commit_message = 'updating file'
+    master_ref = repo.get_git_ref('heads/master')
+    master_sha = master_ref.object.sha
+    base_tree = repo.get_git_tree(master_sha)
+    tree = repo.create_git_tree(github_object, base_tree)
+    parent = repo.get_git_commit(master_sha)
+    commit = repo.create_git_commit(commit_message, tree, [parent])
+    master_ref.edit(commit.sha)
+
+
 @celery.task(name="app.gatherer")
 def gatherer():
     """
     Grabs from dap, censys, eot2016, and parent domains of .gov
     """
-    data = {}
     options = json.load(open("options.creds","r"))
     censys_list = censys_api.gather(".gov", options)
     censys_list = list(set(censys_list))
@@ -222,33 +259,32 @@ def gatherer():
     parents_string = parents.text
     parents_list = string_to_df_to_list(parents_string)
 
-    data["eot2016"] = eot2016_list
-    data["dap"] = dap_list
-    data["parents"] = parents_list
-
-    master_list = parents_list + dap_list + eot2016_list + censys_list
-    master_list = list(set(master_list))
-
     master_data = {
         "eot":[],
         "dap":[],
-        "parents":[],
         "domains":[],
         "censys": []
     }
-    for domain in master_list:
+    print("started for loop")
+    for domain in parents_list:
         master_data["domains"].append(domain)
         master_data["eot"].append(domain in eot2016_list)
         master_data["dap"].append(domain in dap_list)
-        master_data["parents"].append(domain in parents_list)
         master_data["censys"].append(domain in censys_list)
+    print("finished for loop")
+    col = ["domains", ]
     df = pd.DataFrame(master_data)
     s = StringIO()
     df.to_csv(s)
     csv_file_contents = s.getvalue()
-    bucket_name = "dotgov_subdomains"
-    upload_to_s3(csv_file_contents, bucket_name)
+    with open("domain-list.csv","w") as f:
+    	f.write(csv_file_contents)
+    pushing_to_github(csv_file_contents)
+    #bucket_name = "dotgov_subdomains" 
+    #bucket_name = "dotgov_shared_key"
+    #upload_to_s3(csv_file_contents, bucket_name)
     return s.getvalue()
+
 
 ALLOWED_EXTENSIONS = set(['csv'])
 
@@ -265,6 +301,7 @@ def save_csv_to_db(file_path):
         domain = Domains(df.ix[index]["domain"], dt.datetime.now())
         db.session.add(domain)
         db.session.commit()
+
 
 @app.route("/initialize_database", methods=["GET","POST"])
 def init_db():
@@ -302,11 +339,13 @@ def kick_off():
     uswds.delay()
     return "scanners engaged"
 
+
 @app.route("/gather", methods=["GET","POST"])
 def gather():
     # fix this
     gatherer.delay()
     return "success"
+
 
 @app.route("/dummy", methods=["GET","POST"])
 def dum():
@@ -314,5 +353,6 @@ def dum():
     return "success"
 
 
-
+if __name__ == '__main__':
+    app.run(debug=True)
 
