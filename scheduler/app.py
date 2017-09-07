@@ -109,9 +109,9 @@ def upload_to_s3(csv_file_contents, bucket_name):
 def pushing_to_github(csv_file_contents):
     token = json.load(open("github_token.creds","r"))
     g = Github(token)
-    #repo = g.get_user().get_repo('domain-scan-orchestration')
-    org = [org for org in list(g.get_user().get_orgs()) if "18F" in org.url][0]
-    repo = org.get_repo('domain-scan-orchestration')
+    repo = g.get_user().get_repo('domain-scan-orchestration')
+    #org = [org for org in list(g.get_user().get_orgs()) if "18F" in org.url][0]
+    #repo = org.get_repo('domain-scan-orchestration')
     github_object = [InputGitTreeElement(
         'data/domain-list.csv', 
         '100644', 
