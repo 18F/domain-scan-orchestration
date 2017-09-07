@@ -1,0 +1,82 @@
+# Domain Scan Orchestration
+
+## Set up
+
+The steps that follow are needed to set up the mechanism to schedule jobs.
+
+###First - clone the repo:
+
+`git clone https://github.com/18F/domain-scan-orchestration`
+
+###Second - Providing credentials:
+
+*   
+	`options.creds` - this is a json file that was serialized with python's built in json library and the following code:
+
+```
+	import json
+	dicter = { 
+		"censys_id": "", 
+		"censys_key": "", 
+		"query": "parsed.subject.common_name:/gov/ or parsed.extensions.subject_alt_name.dns_names:/gov/", 
+		"export": true
+	}
+	json.dump(open("options.cre"))
+```
+
+You'll need to fill in censys_id and censys_key with your credentials from [censys](https://censys.io/).
+
+* 
+
+	`github_token.creds` - this is a json file that was serialized with python's built in json library and the following code:
+
+```
+	import json
+	github_token = ""
+	json.dump(github_token, open("github_token.creds","w"))
+```
+
+You'll need to get a github token by following the directions found [here](https://github.com/blog/1509-personal-api-tokens)
+
+Make sure both of these commands are run from the top level directory.  
+
+###Third - login to cloud.gov:
+
+[logging in](https://cloud.gov/docs/getting-started/setup/#set-up-the-command-line)
+
+###Fourth - run the deployer script:
+
+`python deployer.py` 
+
+Run the above command to deploy the three seperate manifests found in:
+
+* manifest.yml
+
+* manifest_celery_worker.yml
+
+* manifest_celery_beat.yml
+
+If you want to make sure that the scheduler is running you can head over to:
+
+[https://scheduler.app.cloud.gov/gather](https://scheduler.app.cloud.gov/gather)
+
+This will kick off the process manually.  If you don't see a change, you can reset the csv by hitting:
+
+[https://scheduler.app.cloud.gov/reset](https://scheduler.app.cloud.gov/reset) and then hitting [https://scheduler.app.cloud.gov/gather](https://scheduler.app.cloud.gov/gather) again.
+
+The csv should return to it's original state which can be found here:
+
+[domain-list.csv](https://github.com/18F/domain-scan-orchestration/blob/master/data/domain-list.csv)
+
+Once you are confident the scheduler works, you can just let it run!  The schedule is set in app.py here:
+
+```
+schedule = {
+    "gatherer": {
+        "task": "app.gatherer",
+        "schedule": crontab(0, 0, day_of_week=2),
+    },
+}
+```
+
+If you want to add other tasks, simply add them here.  

@@ -52,10 +52,6 @@ schedule = {
         "task": "app.gatherer",
         "schedule": crontab(0, 0, day_of_week=2),
     },
-    #"dummy": {
-    #	"task": "app.dummy",
-    #	"schedule": crontab(minute="*/1")
-    #}
 }
 
 
@@ -109,9 +105,9 @@ def upload_to_s3(csv_file_contents, bucket_name):
 def pushing_to_github(csv_file_contents):
     token = json.load(open("github_token.creds","r"))
     g = Github(token)
-    repo = g.get_user().get_repo('domain-scan-orchestration')
-    #org = [org for org in list(g.get_user().get_orgs()) if "18F" in org.url][0]
-    #repo = org.get_repo('domain-scan-orchestration')
+    #repo = g.get_user().get_repo('domain-scan-orchestration')
+    org = [org for org in list(g.get_user().get_orgs()) if "18F" in org.url][0]
+    repo = org.get_repo('domain-scan-orchestration')
     github_object = [InputGitTreeElement(
         'data/domain-list.csv', 
         '100644', 
@@ -126,6 +122,10 @@ def pushing_to_github(csv_file_contents):
     parent = repo.get_git_commit(master_sha)
     commit = repo.create_git_commit(commit_message, tree, [parent])
     master_ref.edit(commit.sha)
+
+@celery.task(name="app.reset")
+def reset():
+    pushing_to_github("hello")
 
 
 @celery.task(name="app.gatherer")
@@ -164,18 +164,20 @@ def gatherer():
         master_data["dap"].append(domain in dap_list)
         master_data["censys"].append(domain in censys_list)
     print("finished for loop")
-    col = ["domains", ]
+    cols = ["domains", "eot", "dap", "censys"]
     df = pd.DataFrame(master_data)
+    df = df[cols]
     s = StringIO()
     df.to_csv(s)
     csv_file_contents = s.getvalue()
     with open("domain-list.csv","w") as f:
     	f.write(csv_file_contents)
+    print(csv_file_contents)
     pushing_to_github(csv_file_contents)
     #bucket_name = "dotgov_subdomains" 
     #bucket_name = "dotgov_shared_key"
     #upload_to_s3(csv_file_contents, bucket_name)
-    return s.getvalue()
+    return "success"
 
 
 @app.route("/", methods=["GET","POST"])
@@ -188,6 +190,12 @@ def gather():
     # fix this
     gatherer.delay()
     return "success"
+
+
+@app.route("/reset", methods=["GET", "POST"])
+def reset_csv():
+    reset.delay()
+    return "worked"
 
 
 @app.route("/dummy", methods=["GET","POST"])
