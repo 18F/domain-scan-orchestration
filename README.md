@@ -1,33 +1,82 @@
-## Domain Scan Orchestration
+# Domain Scan Orchestration
 
-This tool is called domain scan orchestration, it automates the process of running [domain-scan](https://github.com/18F/domain-scan) on [cloud.gov](https://cloud.gov/). 
+## Set up
 
-## About this project
+The steps that follow are needed to set up the mechanism to schedule jobs.
 
-This project assumes you are using Python3.  This solution is untested for Python2, so use at your own risk!
+### First - clone the repo:
 
-## Setup
+`git clone https://github.com/18F/domain-scan-orchestration`
 
-To get this tool working you'll need to first login to cloud.gov - documentation for that can be found [here](https://cloud.gov/docs/getting-started/setup/).  Once you are logged into cloud.gov, you can deploy the app!
+### Second - Providing credentials:
 
-The first thing you'll need to do is create an s3 service called dotgov_subdomains.  You'll need this for when you deploy to cloud.gov.
+*   
+	`options.creds` - this is a json file that was serialized with python's built in json library and the following code:
 
-To create an s3 service do the following:
+```
+	import json
+	dicter = { 
+		"censys_id": "", 
+		"censys_key": "", 
+		"query": "parsed.subject.common_name:/gov/ or parsed.extensions.subject_alt_name.dns_names:/gov/", 
+		"export": true
+	}
+	json.dump(open("options.creds"))
+```
 
-`cf create-service s3 basic-public dotgov_subdomains`
+You'll need to fill in censys_id and censys_key with your credentials from [censys](https://censys.io/).
 
-The cloud.gov recommends also doing the following 2 commands:
+* 
 
-`cf bind-service <APP_NAME> <SERVICE_INSTANCE_NAME>`
+	`github_token.creds` - this is a json file that was serialized with python's built in json library and the following code:
 
-`cf restage <APP_NAME>`
+```
+	import json
+	github_token = ""
+	json.dump(github_token, open("github_token.creds","w"))
+```
 
-However, you should need to do this because the services is being bound at deploy time.
+You'll need to get a github token by following the directions found [here](https://github.com/blog/1509-personal-api-tokens)
 
-To deploy - from the root directory of the project do the following:
+Make sure both of these commands are run from the top level directory.  
 
-`cd scheduler`
+### Third - login to cloud.gov:
 
-`python deployer.py #pushes scheduler to cloud.gov` 
+[logging in](https://cloud.gov/docs/getting-started/setup/#set-up-the-command-line)
 
-After that you should have 
+### Fourth - run the deployer script:
+
+`python deployer.py` 
+
+Run the above command to deploy the three seperate manifests found in:
+
+* manifest.yml
+
+* manifest_celery_worker.yml
+
+* manifest_celery_beat.yml
+
+If you want to make sure that the scheduler is running you can head over to:
+
+[https://scheduler.app.cloud.gov/gather](https://scheduler.app.cloud.gov/gather)
+
+This will kick off the process manually.  If you don't see a change, you can reset the csv by hitting:
+
+[https://scheduler.app.cloud.gov/reset](https://scheduler.app.cloud.gov/reset) and then hitting [https://scheduler.app.cloud.gov/gather](https://scheduler.app.cloud.gov/gather) again.
+
+The csv should return to it's original state which can be found here:
+
+[domain-list.csv](https://github.com/18F/domain-scan-orchestration/blob/master/data/domain-list.csv)
+
+Once you are confident the scheduler works, you can just let it run!  The schedule is set in app.py here:
+
+```
+schedule = {
+    "gatherer": {
+        "task": "app.gatherer",
+        "schedule": crontab(0, 0, day_of_week=2),
+    },
+}
+```
+
+If you want to add other tasks, simply add them here.  
