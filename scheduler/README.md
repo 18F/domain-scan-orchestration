@@ -21,7 +21,7 @@ The steps that follow are needed to set up the mechanism to schedule jobs.
 		"query": "parsed.subject.common_name:/gov/ or parsed.extensions.subject_alt_name.dns_names:/gov/", 
 		"export": true
 	}
-	json.dump(open("options.cre"))
+	json.dump(open("options.creds"))
 ```
 
 You'll need to fill in censys_id and censys_key with your credentials from [censys](https://censys.io/).
