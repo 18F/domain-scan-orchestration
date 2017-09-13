@@ -138,8 +138,8 @@ ensure_upload_folder()
 UPLOAD_FOLDER = "csv_upload"
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-#app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
 
 celery = make_celery(app)
 
