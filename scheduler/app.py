@@ -123,6 +123,7 @@ def pushing_to_github(csv_file_contents):
     commit = repo.create_git_commit(commit_message, tree, [parent])
     master_ref.edit(commit.sha)
 
+
 @celery.task(name="app.reset")
 def reset():
     pushing_to_github("hello")
@@ -137,6 +138,7 @@ def gatherer():
     censys_list = censys_api.gather(".gov", options)
     censys_list = list(set(censys_list))
     censys_list = [elem for elem in censys_list if ".gov" in elem]
+    
     eot2016 = requests.get("https://github.com/GSA/data/raw/gh-pages/end-of-term-archive-csv/eot-2016-seeds.csv")
     eot2016_string = eot2016.text
     eot2016_list = string_to_list(eot2016_string)
@@ -157,12 +159,14 @@ def gatherer():
         "domains":[],
         "censys": []
     }
+    
     print("started for loop")
     for domain in parents_list:
         master_data["domains"].append(domain)
         master_data["eot"].append(domain in eot2016_list)
         master_data["dap"].append(domain in dap_list)
         master_data["censys"].append(domain in censys_list)
+
     print("finished for loop")
     cols = ["domains", "eot", "dap", "censys"]
     df = pd.DataFrame(master_data)
