@@ -44,7 +44,14 @@ Make sure both of these commands are run from the top level directory.
 
 [logging in](https://cloud.gov/docs/getting-started/setup/#set-up-the-command-line)
 
-### Fourth - run the deployer script:
+### Fourth - create a database and name it celery-test
+
+To create the database, follow the steps outlined here: https://cloud.gov/docs/services/relational-database/
+
+I'm not sure if you need to run this step, it might be possible to just have the manifest files run this, but I created the database manually and it worked.  I didn't have time to test with having the database get automatically get created from the manifest file.
+
+
+### Fifth - run the deployer script:
 
 `python deployer.py` 
 
