@@ -1,4 +1,7 @@
 from flask import Flask
+from flask.ext.sqlalchemy import SQLAlchemy
+from flask import render_template, request, jsonify, redirect, url_for
+from werkzeug.utils import secure_filename
 import os
 from celery import Celery
 from celery.schedules import crontab
@@ -6,6 +9,7 @@ import cfenv
 import pandas as pd
 from io import StringIO
 import requests
+import datetime as dt
 import json
 import boto
 from boto.s3.key import Key
@@ -16,6 +20,17 @@ from github import InputGitTreeElement
 
 env = cfenv.AppEnv()
 
+
+ALLOWED_EXTENSIONS = set(['csv'])
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def ensure_upload_folder():
+    if not os.path.exists("csv_upload"):
+        os.mkdir("csv_upload")
 
 def make_celery(app):
     celery = Celery(app.import_name, backend=app.config['result_backend'],
@@ -37,33 +52,6 @@ def get_redis_url():
         url = redis.get_url(host='hostname', password='password', port='port')
         return 'redis://{}'.format(url)
     return env.get_credential('REDIS_URL', 'redis://localhost:6379')
-
-
-app = Flask(__name__)
-redis_url = get_redis_url()
-app.config.update(
-    CELERY_BROKER_URL=redis_url,
-    result_backend=redis_url
-)
-
-
-schedule = {
-    "gatherer": {
-        "task": "app.gatherer",
-        "schedule": crontab(0, 0, day_of_week=2),
-    },
-}
-
-
-port = os.getenv("PORT", "5000")
-app.config["PORT"] = int(port)
-app.config["HOST"] = "0.0.0.0"
-app.config["beat_schedule"] = schedule
-#app.config["imports"] = ("gatherer")
-app.config["task_acks_late"] = False
-
-celery = make_celery(app)
-
 
 def string_to_list(string):
     return string.split("\n")
@@ -123,6 +111,48 @@ def pushing_to_github(csv_file_contents):
     commit = repo.create_git_commit(commit_message, tree, [parent])
     master_ref.edit(commit.sha)
 
+
+app = Flask(__name__)
+redis_url = get_redis_url()
+app.config.update(
+    CELERY_BROKER_URL=redis_url,
+    result_backend=redis_url
+)
+
+
+schedule = {
+    "gatherer": {
+        "task": "app.gatherer",
+        "schedule": crontab(0, 0, day_of_week=2),
+    },
+}
+
+db = SQLAlchemy(app)
+port = os.getenv("PORT", "5000")
+app.config["PORT"] = int(port)
+app.config["HOST"] = "0.0.0.0"
+app.config["beat_schedule"] = schedule
+#app.config["imports"] = ("gatherer")
+app.config["task_acks_late"] = False
+ensure_upload_folder()
+UPLOAD_FOLDER = "csv_upload"
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
+
+celery = make_celery(app)
+
+@celery.task(name="app.save_csv_to_db")
+def save_csv_to_db(contents):
+    file = StringIO(contents)
+    df = pd.read_csv(file)
+    for index in df.index:
+        # dt.datetime.now is bad, change this in the near future
+        domain = Domains(df.ix[index]["b'Domain"], dt.datetime.now())
+        db.session.add(domain)
+        db.session.commit()
+
 @celery.task(name="app.reset")
 def reset():
     pushing_to_github("hello")
@@ -137,6 +167,7 @@ def gatherer():
     censys_list = censys_api.gather(".gov", options)
     censys_list = list(set(censys_list))
     censys_list = [elem for elem in censys_list if ".gov" in elem]
+
     eot2016 = requests.get("https://github.com/GSA/data/raw/gh-pages/end-of-term-archive-csv/eot-2016-seeds.csv")
     eot2016_string = eot2016.text
     eot2016_list = string_to_list(eot2016_string)
@@ -155,16 +186,21 @@ def gatherer():
         "eot":[],
         "dap":[],
         "domains":[],
-        "censys": []
+        "censys": [],
+        "parents": []
     }
+    
+    domain_list = [domain.domain for domain in Domains.query.all()]
     print("started for loop")
-    for domain in parents_list:
+    for domain in domain_list:
         master_data["domains"].append(domain)
         master_data["eot"].append(domain in eot2016_list)
         master_data["dap"].append(domain in dap_list)
         master_data["censys"].append(domain in censys_list)
+        master_data["parents"].append(domain in parents)
+
     print("finished for loop")
-    cols = ["domains", "eot", "dap", "censys"]
+    cols = ["domains", "eot", "dap", "censys", "parents"]
     df = pd.DataFrame(master_data)
     df = df[cols]
     s = StringIO()
@@ -180,9 +216,33 @@ def gatherer():
     return "success"
 
 
-@app.route("/", methods=["GET","POST"])
-def index():
-    return "it worked!"
+
+@app.route("/initialize_database", methods=["GET","POST"])
+def init_db():
+    db.create_all()
+    return "database created"
+
+
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            contents = str(file.stream.read())
+            contents = contents.replace("\\r","\r")
+            contents = contents.replace("\\n","\n")
+            save_csv_to_db.delay(contents)
+            return render_template("index.html")
+    return render_template("index.html")
 
 
 @app.route("/gather", methods=["GET","POST"])
@@ -198,10 +258,24 @@ def reset_csv():
     return "worked"
 
 
-@app.route("/dummy", methods=["GET","POST"])
-def dum():
-    dummy.delay()
-    return "success"
+class Domains(db.Model):
+    """
+    This is where the list of current domains to scan is stored.
+    We can see when this domain was added to the list
+    
+    Parameters:
+    @domain - a domain to scan
+    
+    @timestamp - when the domain was added to the database
+    """
+    __tablename__ = "domains"
+    id = db.Column(db.Integer, primary_key=True)
+    domain = db.Column(db.String)
+    timestamp = db.Column(db.DateTime)
+    
+    def __init__(self, domain, timestamp):
+        self.domain = domain
+        self.timestamp = timestamp
 
 
 if __name__ == '__main__':

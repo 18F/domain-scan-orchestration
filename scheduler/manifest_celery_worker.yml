@@ -9,3 +9,4 @@ applications:
   services:
   # enforce a postgres database
   - my-redis-service
+  - celery-test

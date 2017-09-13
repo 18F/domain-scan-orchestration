@@ -8,4 +8,5 @@ applications:
   command: celery -A app.celery beat
   services:
   # enforce a postgres database
+  - celery-test
   - my-redis-service
