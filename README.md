@@ -63,6 +63,14 @@ Run the above command to deploy the three seperate manifests found in:
 
 * manifest_celery_beat.yml
 
+The next thing you'll need to do is very, very hacky -
+
+Head over to [https://scheduler.app.cloud.gov/initialize_database](https://scheduler.app.cloud.gov/initialize_database).
+
+You'll need to do this to initialize the database to Flask-SQLAlchemy.  This is probably possible to do more easily, but I couldn't figure it out.
+
+Then you'll need to upload a csv with a single column called Domain that has a list of all the domains you'll want to scan.  Head to [https://scheduler.app.cloud.gov](https://scheduler.app.cloud.gov) and upload the file to the upload button that should be on the page.
+
 If you want to make sure that the scheduler is running you can head over to:
 
 [https://scheduler.app.cloud.gov/gather](https://scheduler.app.cloud.gov/gather)
@@ -86,4 +94,4 @@ schedule = {
 }
 ```
 
-If you want to add other tasks, simply add them here.  
+If you want to add other tasks, simply add them there.  
