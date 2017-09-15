@@ -138,8 +138,8 @@ ensure_upload_folder()
 UPLOAD_FOLDER = "csv_upload"
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-#app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
+#app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://eric_s:1234@localhost/vc_db"
 
 celery = make_celery(app)
 
@@ -149,14 +149,18 @@ def save_csv_to_db(contents):
     df = pd.read_csv(file)
     for index in df.index:
         # dt.datetime.now is bad, change this in the near future
-        domain = Domains(df.ix[index]["b'Domain"], dt.datetime.now())
-        db.session.add(domain)
-        db.session.commit()
+        containment_set = Domains.query.filter(Domains.domain.contains(df.ix[index]["b'Domain"])).all()
+        if len(containment_set) == 0:
+            domain = Domains(df.ix[index]["b'Domain"], dt.datetime.now())
+            db.session.add(domain)
+            db.session.commit()
 
 @celery.task(name="app.reset")
 def reset():
     pushing_to_github("hello")
 
+def parse_base_domain(domain):
+	return ".".join(domain.split(".")[-2:])
 
 @celery.task(name="app.gatherer")
 def gatherer():
@@ -183,24 +187,27 @@ def gatherer():
     parents_list = string_to_df_to_list(parents_string)
 
     master_data = {
-        "eot":[],
+        "eot2016":[],
         "dap":[],
-        "domains":[],
+        "Domain":[],
         "censys": [],
-        "parents": []
+        "parents": [],
+        "Base Domain": []
+
     }
     
     domain_list = [domain.domain for domain in Domains.query.all()]
     print("started for loop")
     for domain in domain_list:
-        master_data["domains"].append(domain)
-        master_data["eot"].append(domain in eot2016_list)
+        master_data["Domain"].append(domain)
+        master_data["eot2016"].append(domain in eot2016_list)
         master_data["dap"].append(domain in dap_list)
         master_data["censys"].append(domain in censys_list)
         master_data["parents"].append(domain in parents)
+        master_data["Base Domain"].append(parse_base_domain(domain))
 
     print("finished for loop")
-    cols = ["domains", "eot", "dap", "censys", "parents"]
+    cols = ["Domain", "Base Domain", "censys", "dap", "eot2016", "parents"]
     df = pd.DataFrame(master_data)
     df = df[cols]
     s = StringIO()
